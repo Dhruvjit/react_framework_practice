@@ -1,0 +1,13 @@
+/* the scope of this css will always be global
+so avoid the danger of assigning it to other file
+by specifically mentioning to which class file it belongs
+in our case it belongs to Person.js
+*/
+.Person{
+    width: 60%;
+    margin: auto;
+    border: 1px solid #61dafb;
+    box-shadow: 0 2px 4px orange;
+    padding: 16px;
+    text-align: center;
+}
