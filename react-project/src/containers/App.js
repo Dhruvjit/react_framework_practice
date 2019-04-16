@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import classes from './App.module.css';
 //import Radium, {StyleRoot} from 'radium';
-import Person from './Person/Person';
-
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component{
 
@@ -100,25 +99,26 @@ class App extends Component{
             // };
 
         let persons = null;
-        let btnClass = '';
+        //let btnClass = '';
 
-        // if state.showPersons is true then proceed inside
+        // if state.showPersons is true then proceed inside //
         // dynamic adding the list of person by making use of vanilla javascript arrow function
         if(this.state.showPersons){
-            persons = (
-                <div>
-                    {this.state.persons.map((person,index) => {
-                        return <Person
-                            click = {() => this.deletePersonHandler(index)}
-                            name={person.name}
-                            age={person.age}
-                            key={person.id}
-                            changed={(event) => this.nameChangeHandler(event,person.id)}/>
-                    })}
-                </div>
-            );
+            persons = <Persons
+                        persons={this.state.persons}
+                        clicked={this.deletePersonHandler}
+                        changed={this.nameChangeHandler} />;
 
-            btnClass=classes.red;
+            // {this.state.persons.map((person,index) => {
+            //     return <Person
+            //         click = {() => this.deletePersonHandler(index)}
+            //         name={person.name}
+            //         age={person.age}
+            //         key={person.id}
+            //         changed={(event) => this.nameChangeHandler(event,person.id)}/>
+            // })}
+
+            // btnClass=classes.red;
 
             //style.backgroundColor='red';
             // style[':hover'] = {
@@ -127,31 +127,19 @@ class App extends Component{
             // }
         }
 
-        /*
-        * with the code classes.red and such, app.module.css is only scoped to be used in this component
-        * */
 
-        // let classes = ['red','bold'].join(' ');
-        const assignedClasses = [];
-        // if the array has items <= 2, paint them red
-        if(this.state.persons.length<=2){
-            // this `classes.red` is e.g. of using css module
-            assignedClasses.push(classes.red); // classes=['red']
-        }
-        if (this.state.persons.length<=1){
-            assignedClasses.push(classes.bold); // classes=['red','green']
-        }
 
         // jsx script return
         return (
         //    <StyleRoot>
                 <div className={classes.App}>
                     <header className={classes["App-header"]}>
-                        <img src={logo} className={classes["App-logo"]} alt="logo" />
-                        <p className={assignedClasses.join(' ')}> This is really working! </p>
-                        {/*(<button style={style}*/}
-                        <button className={btnClass}
-                                onClick={this.togglePersonsHandler}>Toggle Name</button>
+                        <Cockpit
+                            title={this.props.title}
+                            showPersons={this.state.showPersons}
+                            persons={this.state.persons}
+                            clicked={this.togglePersonsHandler}
+                            />
                         <br/>
                         {persons}
                     </header>

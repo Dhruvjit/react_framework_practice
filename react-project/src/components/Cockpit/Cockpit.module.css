@@ -1,0 +1,50 @@
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.red {
+    color: red;
+}
+
+.greenyellow {
+    color: greenyellow;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.Cockpit button {
+    background-color: aqua;
+    color:dimgrey;
+    font: inherit;
+    border: 1px solid orange;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.Cockpit button:hover{
+    background-color: orange;
+    color: dimgrey;
+}
+
+.Cockpit button.red{
+    background-color: orange;
+}
+
+.Cockpit button.red:hover{
+    background-color: aqua;
+    color: dimgrey;
+}
