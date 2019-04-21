@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from "../../logo.svg";
 import classes from "./Cockpit.module.css";
 
 // follow the best practice of using as many components as possible
 const cockpit = (props) => {
+
+    // this is the lifecycle hook alternative of class components for functional component
+    // there can be multiple useEffect functions
+    useEffect(()=>{
+       console.log('[cockpit.js] useEffect');
+       // you can even send http request here
+        setTimeout(()=>{
+            alert('Saved data to cloud!');
+        }, 1000);
+        return()=>{console.log('[Cockpit.js] cleanup work in useeffect!')}
+    }, [props.persons]);
 
     /*
     * with the code classes.red and such, app.module.css is only scoped to be used in this component

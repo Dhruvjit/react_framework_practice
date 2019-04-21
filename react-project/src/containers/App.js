@@ -17,7 +17,8 @@ class App extends Component{
             {id:"ro", name:'roshni', age:'26'}
         ],
         otherState: 'some other value',
-        showPersons: 'false'
+        showPersons: 'false',
+        showCockpit: 'true'
     };
 
 
@@ -134,12 +135,17 @@ class App extends Component{
         //    <StyleRoot>
                 <div className={classes.App}>
                     <header className={classes["App-header"]}>
+                        <button onClick={()=> {
+                            this.setState({showCockpit:false});
+                        }}>Remove Cockpit</button>
+
+                        {this.state.showCockpit ?
                         <Cockpit
                             title={this.props.title}
                             showPersons={this.state.showPersons}
                             persons={this.state.persons}
                             clicked={this.togglePersonsHandler}
-                            />
+                            /> : null}
                         <br/>
                         {persons}
                     </header>
